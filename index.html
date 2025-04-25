@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Convert currencies easily with this simple and responsive currency converter. Check exchange rates for major countries including South Korea, the US, Europe, Japan, China, and more. Ideal for travelers, expats, and businesses.">
+  <title>Currency Converter - Live Exchange Rates</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f2f2f2;
+      color: #333;
+    }
+    .container {
+      max-width: 500px;
+      margin: 50px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+    }
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .result {
+      margin-top: 20px;
+      font-weight: bold;
+      text-align: center;
+      font-size: 1.2em;
+    }
+    footer {
+      margin-top: 40px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        margin: 20px;
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Currency Converter</h1>
+
+    <label for="amount">Amount</label>
+    <input type="number" id="amount" placeholder="Enter amount" />
+
+    <label for="from">From Currency</label>
+    <select id="from">
+      <option value="USD">USD - US Dollar</option>
+      <option value="KRW">KRW - South Korean Won</option>
+      <option value="EUR">EUR - Euro</option>
+      <option value="JPY">JPY - Japanese Yen</option>
+      <option value="CNY">CNY - Chinese Yuan</option>
+      <option value="GBP">GBP - British Pound</option>
+    </select>
+
+    <label for="to">To Currency</label>
+    <select id="to">
+      <option value="USD">USD - US Dollar</option>
+      <option value="KRW">KRW - South Korean Won</option>
+      <option value="EUR">EUR - Euro</option>
+      <option value="JPY">JPY - Japanese Yen</option>
+      <option value="CNY">CNY - Chinese Yuan</option>
+      <option value="GBP">GBP - British Pound</option>
+    </select>
+
+    <div class="result" id="result">Converted Amount: </div>
+  </div>
+
+  <!-- Footer Ad Section -->
+  <footer>
+    <div style="margin-top: 20px;">
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9288770962100185"
+            crossorigin="anonymous"></script>
+        <!-- notepad -->
+        <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-9288770962100185"
+            data-ad-slot="6399153707"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+  </footer>
+
+  <!-- Currency Conversion Script -->
+  <script>
+    const rates = {
+      USD: { USD: 1, KRW: 1350, EUR: 0.92, JPY: 150, CNY: 7.2, GBP: 0.78 },
+      KRW: { USD: 0.00074, KRW: 1, EUR: 0.00068, JPY: 0.11, CNY: 0.0053, GBP: 0.00058 },
+      EUR: { USD: 1.09, KRW: 1470, EUR: 1, JPY: 163, CNY: 7.8, GBP: 0.85 },
+      JPY: { USD: 0.0067, KRW: 9.1, EUR: 0.0061, JPY: 1, CNY: 0.048, GBP: 0.0052 },
+      CNY: { USD: 0.14, KRW: 190, EUR: 0.13, JPY: 20.8, CNY: 1, GBP: 0.11 },
+      GBP: { USD: 1.28, KRW: 1700, EUR: 1.18, JPY: 193, CNY: 9.1, GBP: 1 }
+    };
+
+    const amountEl = document.getElementById("amount");
+    const fromEl = document.getElementById("from");
+    const toEl = document.getElementById("to");
+    const resultEl = document.getElementById("result");
+
+    function convert() {
+      const amount = parseFloat(amountEl.value);
+      const from = fromEl.value;
+      const to = toEl.value;
+      if (isNaN(amount)) {
+        resultEl.textContent = "Please enter a valid amount.";
+        return;
+      }
+      const rate = rates[from][to];
+      const converted = amount * rate;
+      resultEl.textContent = `Converted Amount: ${converted.toFixed(2)} ${to}`;
+    }
+
+    amountEl.addEventListener("input", convert);
+    fromEl.addEventListener("change", convert);
+    toEl.addEventListener("change", convert);
+  </script>
+</body>
+</html>
