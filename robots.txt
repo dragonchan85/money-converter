@@ -2,4 +2,4 @@ User-agent: *
 Disallow: /private/
 Allow: /
 
-Sitemap: https://dragonchan85.github.io/money-converter/sitemap.xml
+Sitemap: https://money-converter.yesnomark.com/sitemap.xml
